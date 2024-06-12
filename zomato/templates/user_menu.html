@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+{% block title %}Restaurant Menu{% endblock title %}
+{% block body %}
+
+<nav style="height: 70px; width:100%; background-color:black;  ">
+    <center>
+        <ul style="display:flex;justify-content: space-evenly; font-weight:50px;  ">
+            <li><a href="">Veg 🟢</a></li>
+            <li><a href="">Non-Veg 🔴</a></li>
+            <li><a href="">Egg 🥚</a></li>
+        </ul>
+    </center>
+
+</nav>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for item in items %}
+        <div class="col" >
+            <span class="card h-100">
+                <img style="background-size: contain;" src="{{ item.photo.url }}" class="card-img-top" alt="{{ item.item_name }}">
+                <div class="card-body">
+                    <h5 class="card-title">Item : {{ item.item_name }}</h5>
+                    <h5 class="card-title">Price : {{ item.item_price }}</h5>
+                    <p class="card-text">Description : {{ item.item_desc }}</p>
+                    <Span class="card-text" style="display:flex ;">
+                        <form action="add_cart{{item.pk}}" method="post">
+                            {% csrf_token %}
+                        <input type="number" min="1" name="qty">
+                        <input type="submit" value="Add to cart">
+                         </form>
+                    </Span>
+
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+
+{% endblock body %}
+

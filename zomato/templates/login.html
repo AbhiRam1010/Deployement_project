@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}user_regitration{% endblock title %}
+{% block body %}
+<center>
+    <form  method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" name="un">
+        <label for="">Passsword</label>
+        <input type="password" name="pw">
+        <input type="submit" value="Login">
+    </form>
+</center>
+{% endblock body %}

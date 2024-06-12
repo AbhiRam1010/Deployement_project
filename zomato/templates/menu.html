@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Restaurant Menu{% endblock title %}
+{% block body %}
+
+
+<center><table border="2">
+    <tr border="2">
+        <td>Item Id</td>
+        <td>Item Name</td>
+        <td>Item Desc</td>
+        <td>Item Price</td>
+        <td>Action</td>
+        
+    </tr>
+{% for item  in items %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ item.item_name  }}</td>
+        <td>{{item.item_desc}}</td>
+        <td>{{item.item_price}}</td>
+        <td><form action="" method="get">
+            <a href="update{{item.pk}}" class="btn" type="submit">Update</a>
+        </form>
+        <form action="" method="get">
+        <a href="delete{{item.pk}}" class="btn" type="submit">Delete</a>
+         </form>
+        </td>
+    
+    </tr>
+    {% endfor %}
+</table></center>
+
+{% endblock body %}

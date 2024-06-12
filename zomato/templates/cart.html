@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock title %}
+{% block body %}
+<center>
+    <table border="2">
+        <tr>
+            <td>
+                Item Name
+            </td>
+            <td>
+                Quantity
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Total
+            </td>
+        </tr>
+        {% for Co in CO %}
+     
+        <tr>
+            <td>{{Co.name}}</td>
+            <td>{{Co.qty}}</td>
+            <td>{{Co.price}}</td>
+            <td>{{Co.total}}</td>
+        </tr>
+        
+
+        {% endfor %}
+
+        <tr>
+        <td colspan="3">Grand Total</td>
+        <td>{{ Grand_total }}</td>
+        </tr>
+       
+    </table>
+    <form action="Buy" method="post">
+        {% csrf_token %}
+    <input type="submit" value="Order">
+</form>
+</center>
+{% endblock body %}
